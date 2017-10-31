@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-// import "bootstrap/dist/css/bootstrap.css";
 import "../assets/scss/App.css";
-import SearchBar from '../components/SearchBar';
+// import "../assets/scss/bootstrap/bootstrap.css";
+import Button from '../components/Button';
 
 class App extends Component {
   render() {
@@ -14,7 +14,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <div className="container mx-2">
-          <SearchBar />
+          <Button />
         </div>
       </div>
     );
