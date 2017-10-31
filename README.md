@@ -1,3 +1,6 @@
+# Violet UI
+It's the UI Toolkit project for all snappfood projects. (from now on of course :D)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
