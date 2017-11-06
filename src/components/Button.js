@@ -1,7 +1,7 @@
-import React from "react";
-import { Button } from "reactstrap";
+import React from 'react';
+import { Button } from 'reactstrap';
 
-export default class SearchBar extends React.Component {
+export default class MyButton extends React.Component {
   render() {
     return (
       <div className="row">
@@ -13,9 +13,9 @@ export default class SearchBar extends React.Component {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <button className="btn btn-primary">
-                Go somewhere
-                <span className="loginIcon"></span>
+              <button onClick={this.props.onClick} className="btn btn-primary">
+                {this.props.children}
+                <span className="loginIcon" />
               </button>
             </div>
           </div>
