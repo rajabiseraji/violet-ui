@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import "../assets/scss/App.css";
-// import "../assets/scss/bootstrap/bootstrap.css";
+import React, { Component } from 'react';
+import '../assets/scss/App.css';
 import Button from '../components/Button';
 
 class App extends Component {
@@ -10,11 +9,29 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div className="container mx-2">
-          <Button />
+        <div className="container">
+          <div className="row">
+            <div class="col-3 p-1">
+              <Button className="w-100" size="lg" color="primary">
+                کلیک کنید
+              </Button>
+            </div>
+            <div class="col-3 p-1">
+              <Button className="w-100" size="lg" color="primary" outline>
+                کلیک کنید
+              </Button>
+            </div>
+            <div class="col-3 p-1">
+              <Button className="w-100" size="lg" color="secondary">
+                کلیک کنید
+              </Button>
+            </div>
+            <div class="col-3 p-1">
+              <Button className="w-100" size="lg" color="secondary" outline>
+                کلیک کنید
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     );

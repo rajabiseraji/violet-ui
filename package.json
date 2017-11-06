@@ -37,6 +37,7 @@
     "build-js": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9000 -c .storybook"
+    "storybook": "start-storybook -p 9010 -c .storybook",
+    "playground": "npm-run-all -p watch-css storybook"
   }
 }

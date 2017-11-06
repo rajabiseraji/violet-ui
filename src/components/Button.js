@@ -1,29 +1,89 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { mapToCssModules } from '../lib/utils';
 
-export default class MyButton extends React.Component {
+const propTypes = {
+  active: PropTypes.bool,
+  block: PropTypes.bool,
+  color: PropTypes.string,
+  disabled: PropTypes.bool,
+  outline: PropTypes.bool,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  onClick: PropTypes.func,
+  size: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  cssModule: PropTypes.object
+};
+
+const defaultProps = {
+  color: 'secondary',
+  tag: 'button'
+};
+
+class Button extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(e) {
+    if (this.props.disabled) {
+      e.preventDefault();
+      return;
+    }
+
+    if (this.props.onClick) {
+      this.props.onClick(e);
+    }
+  }
+
   render() {
+    let {
+      active,
+      block,
+      className,
+      cssModule,
+      color,
+      outline,
+      size,
+      tag: Tag,
+      innerRef,
+      ...attributes
+    } = this.props;
+
+    const classes = mapToCssModules(
+      classNames(
+        className,
+        'btn',
+        `btn${outline ? '-outline' : ''}-${color}`,
+        size ? `btn-${size}` : false,
+        block ? 'btn-block' : false,
+        { active, disabled: this.props.disabled }
+      ),
+      cssModule
+    );
+
+    if (attributes.href && Tag === 'button') {
+      Tag = 'a';
+    }
+
     return (
-      <div className="row">
-        <div className="col-10">
-          <div className="card">
-            <div className="card-body">
-              <h4 className="card-title">Card title</h4>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <button onClick={this.props.onClick} className="btn btn-primary">
-                {this.props.children}
-                <span className="loginIcon" />
-              </button>
-            </div>
-          </div>
-        </div>
-        <Button outline color="primary">
-          کلیک کن
-        </Button>
-      </div>
+      <Tag
+        type={Tag === 'button' && attributes.onClick ? 'button' : undefined}
+        {...attributes}
+        className={classes}
+        ref={innerRef}
+        onClick={this.onClick}
+      />
     );
   }
 }
+
+Button.propTypes = propTypes;
+Button.defaultProps = defaultProps;
+
+export default Button;

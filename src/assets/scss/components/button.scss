@@ -1,0 +1,48 @@
+@import "../bootstrap/variables";
+
+.btn {
+    font-weight: 700;
+    &:focus {
+        box-shadow: none;
+    }
+    &:active {
+        box-shadow: none;
+    } 
+}
+
+.btn-outline-primary, .btn-outline-secondary {
+    &:hover {
+        background-color: transparent;
+        background-image: none;
+    }
+}
+
+.btn-outline-primary {
+    &:hover {
+        border-color: $dark-pink;
+        color: $dark-pink;
+    }
+}
+.btn-outline-secondary {
+    &:hover {
+        border-color: $gray-light;
+        color: $gray-light;
+    }
+}
+.btn-primary {
+    &:hover {
+        border-color: $dark-pink;
+        background: $dark-pink;
+    }
+}
+.btn-secondary {
+    color: #fff;
+    &:hover {
+        border-color: $gray-light;
+        background: $gray-light;
+        color: #fff;
+    }
+}
+
+
+
