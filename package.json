@@ -39,5 +39,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9010 -c .storybook",
     "playground": "npm-run-all -p watch-css storybook"
+  },
+  "devDependencies": {
+    "@storybook/addon-knobs": "^3.2.14"
   }
 }
