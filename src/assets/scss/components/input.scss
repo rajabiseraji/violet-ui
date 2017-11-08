@@ -1,0 +1,69 @@
+@import "../bootstrap/variables";
+
+.form-control:focus {
+    border-color: $gray_lighter;
+}
+
+.was-validated .form-control:invalid:focus, .form-control.is-invalid:focus, .was-validated
+.custom-select:invalid:focus, .custom-select.is-invalid:focus {
+    box-shadow: none;
+    border-color: $pink;
+}
+
+.form-control.is-valid:focus {
+    box-shadow: none;
+    border-color: $green;
+}
+
+
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon i {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon i  { left:  0px;}
+.right-addon i { right: 0px;}
+
+.valid-icon{
+    color: $green //TODO refactor this to a mixin if necessary
+}
+
+.invalid-icon {
+    color: $pink;
+}
+
+.hidden-icon {
+    display: none;
+}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+// Transitions
+.fade-enter {
+    opacity: 0;
+  }
+  
+  .fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: 500ms ease-in;
+  }
+  
+  .fade-leave {
+    opacity: 1;
+  }
+  
+  .fade-leave.fade-leave-active {
+    opacity: 0;
+    transition: 300ms ease-in;
+  }
+
+
