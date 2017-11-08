@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../components/Input';
 import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 /*
 ** This one is to make sure it later renders match the snapshot
@@ -42,3 +43,8 @@ it('Changes border color when valid changes in any size', () => {
     expect(tree).toMatchSnapshot();
   });
 });
+
+/**
+ * TODO
+ * We have to write some enzyme tests for checking if hover and focus border colors work
+ */
