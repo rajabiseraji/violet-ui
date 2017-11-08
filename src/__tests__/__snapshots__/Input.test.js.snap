@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Changes border color when valid changes in any size 1`] = `
+<input
+  className="form-control"
+  type="text"
+/>
+`;
+
+exports[`Changes border color when valid changes in any size 2`] = `
+<input
+  className="form-control"
+  type="text"
+/>
+`;
+
+exports[`Changes border color when valid changes in any size 3`] = `
+<input
+  className="form-control"
+  type="text"
+/>
+`;
+
+exports[`Changes border color when valid changes in any size 4`] = `
+<input
+  className="form-control"
+  type="text"
+/>
+`;
+
+exports[`Changes border color when valid changes in any size 5`] = `
+<input
+  className="form-control"
+  type="text"
+/>
+`;
+
+exports[`Changes border color when valid changes in any size 6`] = `
+<input
+  className="form-control"
+  type="text"
+/>
+`;
+
+exports[`Changes border color when valid changes in any size 7`] = `
+<input
+  className="form-control"
+  type="text"
+/>
+`;
+
+exports[`renders correctly 1`] = `
+<input
+  className="form-control"
+  type="text"
+/>
+`;
+
+exports[`renders correctly in different sizes 1`] = `
+<input
+  className="form-control-lg form-control"
+  type="text"
+/>
+`;
+
+exports[`renders correctly in different sizes 2`] = `
+<input
+  className="form-control-lg form-control"
+  type="text"
+/>
+`;
+
+exports[`renders correctly in different sizes 3`] = `
+<input
+  className="form-control-lg form-control"
+  type="text"
+/>
+`;
+
+exports[`renders correctly in different sizes 4`] = `
+<input
+  className="form-control-lg form-control"
+  type="text"
+/>
+`;
