@@ -5,20 +5,14 @@ import Input from '../components/Input';
 
 export default class App extends React.Component {
   state = {
-    myText: '',
+    input1_text: '',
+    input2_text: '',
     clicked: false
   };
 
-  testMe = e => {
-    console.log(e.target.value);
-    this.setState({ myText: e.target.value });
-    this.setState({ clicked: !this.state.clicked });
-    console.log(this.state.myText);
-  };
-
-  validator = () => {
-    if (this.state.myText.indexOf('hi') !== -1) return true;
-    else if (this.state.myText.indexOf('bye') !== -1) return null;
+  validator = input => {
+    if (input.indexOf('hi') !== -1) return true;
+    else if (input.indexOf('bye') !== -1) return null;
     else return false;
   };
 
@@ -62,9 +56,22 @@ export default class App extends React.Component {
               <label className="w-100">سلام</label>
               <Input
                 className="w-100"
-                onChange={this.testMe}
-                valid={this.validator()}
+                onChange={e => this.setState({ input1_text: e.target.value })}
+                valid={this.validator(this.state.input1_text)}
               />
+            </div>
+            <div className="row">
+              <label className="w-100">سلام</label>
+              <Input
+                ref="some"
+                className="w-100"
+                onChange={e => this.setState({ input2_text: e.target.value })}
+                valid={this.validator(this.state.input2_text)}
+              />
+              <Input type="select" className="mt-2">
+                <option vlaue="no way">سلام بر شما</option>
+                <option vlaue="yes way">وای بر شما</option>
+              </Input>
             </div>
           </div>
         </div>
