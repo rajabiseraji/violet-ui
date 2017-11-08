@@ -68,7 +68,7 @@ export default class App extends React.Component {
                 onChange={e => this.setState({ input2_text: e.target.value })}
                 valid={this.validator(this.state.input2_text)}
               />
-              <Input type="select" className="mt-2">
+              <Input type="select" className="mt-2 w-50">
                 <option vlaue="no way">سلام بر شما</option>
                 <option vlaue="yes way">وای بر شما</option>
               </Input>

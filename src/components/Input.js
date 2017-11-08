@@ -79,6 +79,8 @@ class Input extends React.Component {
       } else {
         formControlClass = 'form-check-input';
       }
+    } else if (selectInput) {
+      formControlClass = `${formControlClass} custom-select`;
     }
 
     if (attributes.size && isNotaNumber.test(attributes.size)) {
