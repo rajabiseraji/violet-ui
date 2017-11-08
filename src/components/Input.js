@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { mapToCssModules, warnOnce } from '../lib/utils';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 const propTypes = {
   children: PropTypes.node,
@@ -20,6 +21,26 @@ const propTypes = {
 const defaultProps = {
   tag: 'p',
   type: 'text'
+};
+
+const FeedbackIcon = props => {
+  let validIconClass = `fa fa-${props.valid
+    ? 'check'
+    : 'exclamation'} ${props.valid ? 'valid-icon' : 'invalid-icon'}`;
+  if (props.valid === true || props.valid === false) {
+    return <i key={props.valid + '-icon'} className={validIconClass} />;
+  } else return null;
+};
+
+const InputWrapper = props => {
+  return (
+    <div
+      key={props.innerRef + '-div'}
+      className={classNames('inner-addon left-addon', props.className)}
+    >
+      {props.children}
+    </div>
+  );
 };
 
 class Input extends React.Component {
@@ -84,17 +105,31 @@ class Input extends React.Component {
     }
 
     if (Tag === 'input') {
-      let validIconClass = `fa fa-${valid ? 'check' : 'exclamation'} ${valid
-        ? 'valid-icon'
-        : 'invalid-icon'}`;
-      if (valid !== undefined)
-        return (
-          <div className={classNames('inner-addon left-addon', className)}>
-            <i className={validIconClass} />
-            <Tag {...attributes} ref={innerRef} className={classes} />
-          </div>
-        );
-      else return <Tag {...attributes} ref={innerRef} className={classes} />;
+      return (
+        <InputWrapper
+          valid={valid === undefined ? undefined : this.props.valid}
+          innerRef={this.props.innerRef}
+          className={this.props.className}
+        >
+          <CSSTransitionGroup
+            transitionName="fade"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}
+            className={className}
+          >
+            <FeedbackIcon
+              valid={this.props.valid}
+              key={
+                (this.props.valid === undefined ? '' : this.props.valid) +
+                'feedback-icon'
+              }
+            />
+          </CSSTransitionGroup>
+          <input {...attributes} ref={innerRef} className={classes} />
+        </InputWrapper>
+      );
     } else {
       return <Tag {...attributes} ref={innerRef} className={classes} />;
     }

@@ -5,18 +5,20 @@ import Input from '../components/Input';
 
 export default class App extends React.Component {
   state = {
-    myText: ''
+    myText: '',
+    clicked: false
   };
 
   testMe = e => {
     console.log(e.target.value);
     this.setState({ myText: e.target.value });
+    this.setState({ clicked: !this.state.clicked });
     console.log(this.state.myText);
   };
 
   validator = () => {
-    if (this.state.myText === 'hi') return true;
-    else if (this.state.myText === 'bye') return null;
+    if (this.state.myText.indexOf('hi') !== -1) return true;
+    else if (this.state.myText.indexOf('bye') !== -1) return null;
     else return false;
   };
 
@@ -63,8 +65,6 @@ export default class App extends React.Component {
                 onChange={this.testMe}
                 valid={this.validator()}
               />
-              <label className="w-100">خدافظ</label>
-              <Input className="w-100" />
             </div>
           </div>
         </div>
@@ -72,5 +72,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-// export default App;

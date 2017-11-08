@@ -18,7 +18,7 @@
     "react-popper": "^0.7.4",
     "react-scripts": "1.0.14",
     "react-test-renderer": "^16.0.0",
-    "react-transition-group": "^2.2.1",
+    "react-transition-group": "1.x",
     "reactstrap": "next"
   },
   "lint-staged": {
