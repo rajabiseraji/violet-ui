@@ -14,7 +14,7 @@ storiesOf('Button', module)
       </div>
     </div>
   ))
-  .add('Butotn Secondary Outline', () => (
+  .add('Button Secondary Outline', () => (
     <MyButton
       className="w-100"
       onClick={action('clicked')}
