@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { mapToCssModules, warnOnce } from '../lib/utils';
-import { CSSTransitionGroup } from 'react-transition-group';
+// import { mapToCssModules, warnOnce } from '../lib/utils';
+// import { CSSTransitionGroup } from 'react-transition-group';
 
-const options = props => {
+const Options = props => {
   let optionItems = props.formOptions.map((option, index) => (
     <option
       value={option.value}
@@ -34,7 +34,7 @@ export default class Select extends React.Component {
   };
 
   static defaultProps = {
-    value: {},
+    value: '',
     first: '',
     multiple: false,
     selectSize: 4,
@@ -43,7 +43,22 @@ export default class Select extends React.Component {
     id: '',
     disabled: false,
     required: false,
+    bsSize: 'md',
     change: () => ''
+  };
+
+  handleChange = event => {
+    let selectValue = event.target.value; // this is the value of the selected option
+    // TODO: Sanitize the value if need be
+    // let local = this.state.localValue || [];
+    // let selectValueIndex = local.indexOf(selectValue)
+    // if(selectValueIndex !== -1)
+    //   local.splice(selectValueIndex, 1);
+    // else if(selectValueIndex === -1)
+    //   local.push(selectValue);
+    this.setState({ localValue: selectValue });
+    // Emit change event
+    this.props.change(selectValue);
   };
 
   computedState = () => {
@@ -56,6 +71,9 @@ export default class Select extends React.Component {
     return null;
   };
 
+  /**
+   * This handles validity state of the select
+   */
   stateClass = () => {
     const state = this.computedState();
     if (state === true) {
@@ -65,23 +83,48 @@ export default class Select extends React.Component {
     }
     return null;
   };
-
+  /**
+   * This computes the class that must be assigned to the select tag
+   */
   inputClass = () => {
     return [
       'form-control',
       this.stateClass(),
       `form-control-${this.props.bsSize}`,
-      !this.props.multiple && this.props.selectSize > 1 ? null : 'custom-select'
+      !!this.props.multiple && this.props.selectSize > 1
+        ? null
+        : 'custom-select'
     ];
   };
 
-  states = {
-    localValue: this.props.value
+  state = {
+    localValue: this.props.multiple ? [] : this.props.value
   };
 
   render(props) {
-    this.props.value = Object.assign({}, this.state.localValue);
+    // this.props.value = Object.assign({}, this.state.localValue);
 
-    return;
+    return (
+      <select
+        className={classNames(this.inputClass(), this.stateClass())}
+        name={this.props.name}
+        id={this.props.id}
+        onChange={this.handleChange}
+        // value = {this.state.localValue}
+        multiple={this.props.multiple}
+        size={
+          this.props.multiple || this.props.selectSize > 1
+            ? this.props.selectSize
+            : null
+        }
+        disabled={this.props.disabled}
+        required={this.props.required}
+        ref="input"
+      >
+        <Options formOptions={this.props.options} />
+      </select>
+    );
   }
 }
+
+//TODO: Make SSR Considerations like safe ID and others ..

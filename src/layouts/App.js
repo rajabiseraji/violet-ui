@@ -2,12 +2,15 @@ import React from 'react';
 import '../assets/scss/App.css';
 import Button from '../components/Button';
 import Input from '../components/Input';
+import AdvancedSelect from '../components/AdvancedSelect';
+import 'react-select/dist/react-select.css';
 
 export default class App extends React.Component {
   state = {
     input1_text: '',
     input2_text: '',
-    clicked: false
+    clicked: false,
+    val: ''
   };
 
   validator = input => {
@@ -16,6 +19,15 @@ export default class App extends React.Component {
     else return false;
   };
 
+  options = () => {
+    let options = [
+      { value: '4', label: 'سلام' },
+      { value: '5', label: 'خدافظ' },
+      { value: '6', label: 'رستوران یک' },
+      { value: '7', label: 'آپشن دو' }
+    ];
+    return options;
+  };
   render() {
     return (
       <div className="App">
@@ -68,10 +80,22 @@ export default class App extends React.Component {
                 onChange={e => this.setState({ input2_text: e.target.value })}
                 valid={this.validator(this.state.input2_text)}
               />
-              <Input type="select" className="mt-2 w-50">
+              <Input type="select" className="mt-2 w-50" placeholder="تست من">
+                <option disabled>تست تست</option>
                 <option vlaue="no way">سلام بر شما</option>
                 <option vlaue="yes way">وای بر شما</option>
               </Input>
+            </div>
+            <div className="row justify-content-center">
+              <AdvancedSelect
+                options={this.options()}
+                onChange={value => this.setState({ val: value })}
+                className="w-100 mt-2 text-right"
+                multiple={true}
+                value={this.state.val}
+                placeholder="متن جستجو را وارد کنید"
+                autosize={false}
+              />
             </div>
           </div>
         </div>
