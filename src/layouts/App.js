@@ -90,11 +90,11 @@ export default class App extends React.Component {
               <AdvancedSelect
                 options={this.options()}
                 onChange={value => this.setState({ val: value })}
-                className="w-100 mt-2 text-right"
+                className="w-50 mt-2 text-right"
                 multiple={true}
                 value={this.state.val}
                 placeholder="متن جستجو را وارد کنید"
-                autosize={false}
+                searchable={false}
               />
             </div>
           </div>

@@ -96,6 +96,8 @@ export default class AdvancedSelect extends React.Component {
         value={this.props.value}
         autoBlur={false}
         autosize={false}
+        openOnFocus={true}
+        openOnClick={true}
       />
     );
   }
