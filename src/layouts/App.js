@@ -3,6 +3,7 @@ import '../assets/scss/App.css';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import AdvancedSelect from '../components/AdvancedSelect';
+import CheckBox from '../components/Checkbox';
 import 'react-select/dist/react-select.css';
 
 export default class App extends React.Component {
@@ -27,6 +28,10 @@ export default class App extends React.Component {
       { value: '7', label: 'آپشن دو' }
     ];
     return options;
+  };
+
+  onSelectChange = e => {
+    console.log(e);
   };
   render() {
     return (
@@ -100,6 +105,9 @@ export default class App extends React.Component {
                 placeholder="متن جستجو را وارد کنید"
                 searchable={false}
               />
+            </div>
+            <div className="row">
+              <CheckBox label="سلام" onChange={this.onSelectChange} />
             </div>
           </div>
         </div>

@@ -1,0 +1,8 @@
+.custom-control-description { 
+    user-select: none;
+}
+
+.custom-checkbox input:focus + .custom-control-indicator { 
+    box-shadow: none;
+}
+
