@@ -2,7 +2,7 @@
 
 .violet-option {
     // background: transparent;
-    &:hover {
+    &:hover, .Select-control:hover & {
         color: $primary-color;
         background: $gray-lightest;
     }

@@ -80,18 +80,22 @@ export default class App extends React.Component {
                 onChange={e => this.setState({ input2_text: e.target.value })}
                 valid={this.validator(this.state.input2_text)}
               />
-              <Input type="select" className="mt-2 w-50" placeholder="تست من">
-                <option disabled>تست تست</option>
-                <option vlaue="no way">سلام بر شما</option>
-                <option vlaue="yes way">وای بر شما</option>
-              </Input>
             </div>
-            <div className="row justify-content-center">
+            <div className="d-flex w-100 justify-content-around">
+              <AdvancedSelect
+                options={this.options()}
+                onChange={value => this.setState({ val: value })}
+                className="w-50 ml-1 mt-2 text-right"
+                multiple={true}
+                value={this.state.val}
+                placeholder="متن جستجو را وارد کنید"
+                searchable={true}
+              />
               <AdvancedSelect
                 options={this.options()}
                 onChange={value => this.setState({ val: value })}
                 className="w-50 mt-2 text-right"
-                multiple={true}
+                multiple={false}
                 value={this.state.val}
                 placeholder="متن جستجو را وارد کنید"
                 searchable={false}
