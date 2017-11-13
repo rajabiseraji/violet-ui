@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import Input from '../components/Input';
 import AdvancedSelect from '../components/AdvancedSelect';
 import CheckBox from '../components/Checkbox';
+import CheckboxGroup from '../components/CheckboxGroup';
 import 'react-select/dist/react-select.css';
 
 export default class App extends React.Component {
@@ -11,7 +12,22 @@ export default class App extends React.Component {
     input1_text: '',
     input2_text: '',
     clicked: false,
-    val: ''
+    val: '',
+    checkBoxOptions: [
+      {
+        value: 'سلام',
+        isChecked: false
+      },
+      {
+        value: 'بای',
+        isChecked: false
+      },
+      {
+        value: 'های',
+        isChecked: true
+      }
+    ],
+    selected: []
   };
 
   validator = input => {
@@ -112,6 +128,14 @@ export default class App extends React.Component {
             <div className="row">
               <CheckBox label="خدافظ" onChange={this.onSelectChange} />
             </div>
+            <div className="row mt-3">
+              <CheckboxGroup
+                direction="left"
+                options={this.state.checkBoxOptions}
+                onChange={e => this.setState({ selected: e })}
+              />
+            </div>
+            <div className="row mt-3">{this.state.selected}</div>
           </div>
         </div>
       </div>

@@ -27,10 +27,15 @@ export default class Checkbox extends React.Component {
 
   handleChanges = e => {
     this.setState({ localValue: e.target.checked });
-    if (!this.state.localValue)
-      this.props.value
-        ? this.props.onChange(this.props.value)
-        : this.props.onChange(this.props.id);
+    this.props.value
+      ? this.props.onChange({
+          value: this.props.value,
+          isChecked: e.target.checked
+        })
+      : this.props.onChange({
+          value: this.props.id,
+          isChecked: e.target.checked
+        });
   };
 
   render() {
