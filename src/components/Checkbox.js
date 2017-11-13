@@ -12,11 +12,13 @@ export default class Checkbox extends React.Component {
     onChange: PropTypes.func,
     value: PropTypes.string,
     isChecked: PropTypes.bool,
-    id: PropTypes.string
+    id: PropTypes.string,
+    direction: PropTypes.oneOf(['right', 'left'])
   };
 
   static defaultProps = {
-    isChecked: false
+    isChecked: false,
+    direction: 'right'
   };
 
   state = {
@@ -56,8 +58,13 @@ export default class Checkbox extends React.Component {
           checked={this.state.localValue}
           onChange={this.handleChanges}
         />
-        <span className="custom-control-indicator" />
+        {this.props.direction === 'right' ? (
+          <span className="custom-control-indicator ml-2" />
+        ) : null}
         <span className={DescriptionClasses}>{this.props.label}</span>
+        {this.props.direction === 'left' ? (
+          <span className="custom-control-indicator mr-2" />
+        ) : null}
       </label>
     );
   }

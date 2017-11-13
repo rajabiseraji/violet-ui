@@ -109,6 +109,9 @@ export default class App extends React.Component {
             <div className="row">
               <CheckBox label="سلام" onChange={this.onSelectChange} />
             </div>
+            <div className="row">
+              <CheckBox label="خدافظ" onChange={this.onSelectChange} />
+            </div>
           </div>
         </div>
       </div>
