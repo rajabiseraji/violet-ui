@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Radio from './Radio';
 // import classNames from 'classnames';
-import Checkbox from './Checkbox';
 
 const Wrapper = props => {
   if (props.stacked) return <div className="w-100">{props.children}</div>;
   else return props.children;
 };
 
-export default class CheckboxGroup extends React.Component {
+export default class RadioGroup extends React.Component {
   static PropType = {
     children: PropTypes.arrayOf(PropTypes.node),
-    value: PropTypes.arrayOf(PropTypes.string),
+    value: PropTypes.string,
     options: PropTypes.arrayOf(PropTypes.object),
     stacked: PropTypes.bool,
     id: PropTypes.string,
@@ -20,7 +20,7 @@ export default class CheckboxGroup extends React.Component {
   };
 
   static defaultProps = {
-    value: [],
+    value: '',
     options: [
       {
         value: '',
@@ -33,7 +33,7 @@ export default class CheckboxGroup extends React.Component {
   };
 
   state = {
-    localValue: []
+    localValue: ''
   };
 
   componentWillMount() {
@@ -48,27 +48,23 @@ export default class CheckboxGroup extends React.Component {
     /**
          * Handle inner component stuff
          */
-    let localIndex = this.state.localValue.indexOf(option.value);
-    let futureState = this.state.localValue;
-    if (localIndex === -1 && option.isChecked) futureState.push(option.value);
-    else if (localIndex > -1 && !option.isChecked)
-      futureState.splice(localIndex, 1);
-    this.setState({ localValue: futureState });
+
+    this.setState({ localValue: option.value });
     /**
          * Trigger the parent event 
          */
-    if (this.props.onChange) this.props.onChange(this.state.localValue);
+    if (this.props.onChange) this.props.onChange(option.value);
   };
 
   GenerateOptions = () => {
     let Options = this.props.options.map((option, index) => {
       return (
-        <Wrapper stacked={this.props.stacked} key={`wrapper-checkbox-${index}`}>
-          <Checkbox
+        <Wrapper stacked={this.props.stacked} key={`wrapper-radiobox-${index}`}>
+          <Radio
             className={option.className}
             label={option.value || `option-${index}`}
             value={option.value || `option-${index}`}
-            isChecked={option.isChecked}
+            isChecked={option.value === this.state.localValue}
             direction={this.props.direction}
             onChange={this.handleChange}
             key={`option-${index}`}
@@ -83,16 +79,14 @@ export default class CheckboxGroup extends React.Component {
     if (!this.props.children) return;
     return this.props.children.map((child, index) => {
       return (
-        <Wrapper
-          stacked={this.props.stacked}
-          key={`wrapper-checkbox-child-${index}`}
-        >
+        <Wrapper stacked={this.props.stacked}>
           {React.cloneElement(child, {
             onChange: this.handleChange,
             label: child.props.label || `child-${index}`,
             value: child.props.value || `child-${index}`,
             direction: this.props.direction,
-            key: `child-${index}`
+            key: `child-${index}`,
+            isChecked: child.value === this.state.localValue
           })}
         </Wrapper>
       );
