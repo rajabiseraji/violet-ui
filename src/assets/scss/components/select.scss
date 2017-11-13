@@ -1,0 +1,91 @@
+@import "../bootstrap/variables";
+
+.violet-option {
+    // background: transparent;
+    &:hover {
+        color: $primary-color;
+        background: $gray-lightest;
+    }
+
+    &.is-focused {
+        color: $primary-color;
+        background: $gray-lightest;
+    }
+
+    .Select--multi &.Select-value {
+        background: $gray-lightest;
+        color: $gray-dark;
+        border-radius: 10px;
+        border-color: $gray-lighter;
+
+    }
+
+    .Select--multi &.Select-value:hover {
+        color: $primary-color;
+    }
+
+    &.Select-value .Select-value-icon:hover {
+        color: $primary-color;
+    }
+}
+
+.Select--single .is-focused .violet-option {
+    border-color: $gray-lightest;
+}
+
+
+
+.Select-input {
+    flex-grow: 120; // a big value so that it can extend and squize the others
+}
+
+.Select--multi .Select-multi-value-wrapper, .Select .Select-multi-value-wrapper { 
+    padding-right: 10px;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.Select-menu-outer {
+    border-top: none;
+}
+
+.Select--multi .Select-value-icon, .Select .Select-value-icon {
+    border-right: none;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.Select--multi .Select-value, .Select .Select-value {
+    vertical-align: middle;
+    margin-top: 0;
+}
+
+.Select-arrow { 
+    margin-top: auto;
+    margin-bottom: auto;
+    align-self: center;
+}
+/*
+* This is for disabling the blue glow around the box 
+*/
+.is-focused:not(.is-open) > .Select-control{
+        box-shadow: none;
+        outline: none;
+        border-color: $gray-lighter;
+}
+
+.Select-control {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    justify-content: center;
+    vertical-align: middle;
+    display: flex;
+    height: auto;
+}
+
+.Select--multi .Select-clear-zone, .Select-arrow-zone, .Select .Select-clear-zone {
+    display: inline-flex;
+    align-items: center;
+}

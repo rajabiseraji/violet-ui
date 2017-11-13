@@ -41,6 +41,7 @@
     "playground": "npm-run-all -p watch-css storybook"
   },
   "devDependencies": {
-    "@storybook/addon-knobs": "^3.2.14"
+    "@storybook/addon-knobs": "^3.2.14",
+    "react-select": "^1.0.0-rc.10"
   }
 }
