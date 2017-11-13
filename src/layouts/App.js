@@ -103,7 +103,7 @@ export default class App extends React.Component {
                 valid={this.validator(this.state.input2_text)}
               />
             </div>
-            <div className="d-flex w-100 justify-content-around">
+            <div className="d-flex justify-content-around">
               <AdvancedSelect
                 options={this.options()}
                 onChange={value => this.setState({ val: value })}
@@ -143,10 +143,38 @@ export default class App extends React.Component {
             <div className="row mt-3 mb-3">
               <RadioGroup
                 direction="right"
-                stacked={true}
                 options={this.state.checkBoxOptions}
                 onChange={e => this.setState({ selected: e })}
               />
+            </div>
+            <div className="row mt-3 mb-3">
+              <div className="">
+                <label>تست</label>
+                <div className="input-group">
+                  <div className="d-flex flex-row">
+                    <div className="btn-group-vertical btn-group-xs">
+                      <button
+                        className="btn btn-secondary btn-sm display-flex"
+                        type="button"
+                      >
+                        <i className="fa fa-chevron-up" />
+                      </button>
+                      <button
+                        className="btn btn-secondary btn-sm display-flex"
+                        type="button"
+                      >
+                        <i className="fa fa-chevron-down" />
+                      </button>
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search for..."
+                    aria-label="Search for..."
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
