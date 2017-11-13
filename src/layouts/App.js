@@ -133,9 +133,40 @@ export default class App extends React.Component {
                 direction="left"
                 options={this.state.checkBoxOptions}
                 onChange={e => this.setState({ selected: e })}
-              />
+              >
+                <CheckBox label="خدافظ" value="اینا" />
+                <CheckBox label="خدافظ" value="اینا" />
+              </CheckboxGroup>
             </div>
             <div className="row mt-3">{this.state.selected}</div>
+            <div className="row mt-3 mb-3">
+              <div className="custom-controls-stacked d-block my-3">
+                <label className="custom-control custom-radio">
+                  <input
+                    id="radioStacked1"
+                    name="radio-stacked"
+                    type="radio"
+                    className="custom-control-input"
+                  />
+                  <span className="custom-control-indicator" />
+                  <span className="custom-control-description">
+                    Toggle this custom radio
+                  </span>
+                </label>
+                <label className="custom-control custom-radio">
+                  <input
+                    id="radioStacked2"
+                    name="radio-stacked"
+                    type="radio"
+                    className="custom-control-input"
+                  />
+                  <span className="custom-control-indicator" />
+                  <span className="custom-control-description">
+                    Or toggle this other custom radio
+                  </span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
       </div>

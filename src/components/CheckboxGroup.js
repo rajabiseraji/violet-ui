@@ -7,9 +7,10 @@ const Wrapper = props => {
   if (props.stacked) return <div className="w-100">{props.children}</div>;
   else return props.children;
 };
+
 export default class CheckboxGroup extends React.Component {
   static PropType = {
-    children: PropTypes.instanceOf(Checkbox),
+    children: PropTypes.arrayOf(PropTypes.node),
     value: PropTypes.arrayOf(PropTypes.string),
     options: PropTypes.arrayOf(PropTypes.object),
     stacked: PropTypes.bool,
@@ -80,8 +81,18 @@ export default class CheckboxGroup extends React.Component {
 
   GenerateChildren = () => {
     if (!this.props.children) return;
-    return this.props.children.map(checkbox => {
-      return <Wrapper stacked={this.props.stacked}>{checkbox}</Wrapper>;
+    return this.props.children.map((child, index) => {
+      return (
+        <Wrapper stacked={this.props.stacked}>
+          {React.cloneElement(child, {
+            onChange: this.handleChange,
+            label: child.props.label || `child-${index}`,
+            value: child.props.value || `child-${index}`,
+            direction: this.props.direction,
+            key: `child-${index}`
+          })}
+        </Wrapper>
+      );
     });
   };
 
@@ -93,8 +104,8 @@ export default class CheckboxGroup extends React.Component {
   render() {
     return (
       <div className={this.directionClass()}>
-        {this.GenerateChildren()}
         {this.GenerateOptions()}
+        {this.GenerateChildren()}
       </div>
     );
   }

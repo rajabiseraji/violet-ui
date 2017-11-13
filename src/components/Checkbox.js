@@ -18,7 +18,8 @@ export default class Checkbox extends React.Component {
 
   static defaultProps = {
     isChecked: false,
-    direction: 'right'
+    direction: 'right',
+    onChange: () => {}
   };
 
   state = {
