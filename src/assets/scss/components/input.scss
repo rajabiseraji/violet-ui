@@ -24,12 +24,13 @@
 .inner-addon i {
   position: absolute;
   padding: 10px;
+  padding-right: 15px;
   pointer-events: none;
 }
 
 /* align icon */
 .left-addon i  { left:  0px;}
-.right-addon i { right: 0px;}
+.right-addon .icon { right: 0px;}
 
 .valid-icon{
     color: $green //TODO refactor this to a mixin if necessary
@@ -43,9 +44,13 @@
     display: none;
 }
 
+.right-addon .icon {
+    color: $gray-lighter;
+}
+
 /* add padding  */
 .left-addon input  { padding-left:  30px; }
-.right-addon input { padding-right: 30px; }
+.right-addon input { padding-right: 40px; }
 
 // Transitions
 .fade-enter {

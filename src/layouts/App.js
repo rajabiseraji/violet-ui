@@ -97,6 +97,8 @@ export default class App extends React.Component {
                 className="w-100"
                 onChange={e => this.setState({ input1_text: e.target.value })}
                 valid={this.validator(this.state.input1_text)}
+                placeholder="رمز عبور"
+                type="password"
               />
             </div>
             <div className="row text-right">
