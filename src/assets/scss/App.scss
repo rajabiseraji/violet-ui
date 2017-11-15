@@ -1,4 +1,5 @@
 @import "../font/farsi.css";
+@import "./bootstrap/variables";
 
 * {
   font-family: "IRANYekan";
@@ -30,3 +31,6 @@
   to { transform: rotate(360deg); }
 }
 
+.display-flex {
+  display: flex;
+}

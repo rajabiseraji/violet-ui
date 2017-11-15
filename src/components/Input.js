@@ -43,7 +43,76 @@ const InputWrapper = props => {
   );
 };
 
+const RenderNumber = props => {
+  let { innerRef, classes, ...attributes } = props;
+  let value = props.value || 0;
+
+  const increase = () => {
+    if (props.max !== undefined && value < props.max) {
+      value++;
+    } else if (props.max === undefined) value++;
+    props.onChange(value);
+  };
+
+  const decrease = () => {
+    if (props.min !== undefined && value > props.min) {
+      value--;
+    } else if (props.min === undefined) value--;
+    props.onChange(value);
+  };
+
+  const handleChange = e => {
+    let val = e.target.value;
+    if (
+      (props.min !== undefined && val < props.min) ||
+      (props.max !== undefined && val > props.max)
+    ) {
+      return;
+    }
+    value = val;
+    props.onChange(val);
+  };
+  return (
+    <div className="qty-container">
+      <div className="d-flex flex-row">
+        <div className="btn-group-vertical btn-group-xs">
+          <button
+            className="btn btn-secondary btn-sm display-flex qty-button qty-increase"
+            type="button"
+            onMouseDown={increase}
+          >
+            <i className="fa fa-chevron-up" />
+          </button>
+          <button
+            className="btn btn-secondary btn-sm display-flex qty-button qty-decrease"
+            type="button"
+            onMouseDown={decrease}
+          >
+            <i className="fa fa-chevron-down" />
+          </button>
+        </div>
+        <input
+          type="number"
+          className={classNames('form-control qty-input', classes)}
+          {...attributes}
+          value={props.value}
+          onChange={handleChange}
+          ref={innerRef}
+        />
+      </div>
+    </div>
+  );
+};
+
 class Input extends React.Component {
+  state = {
+    localValue: this.props.value || ''
+  };
+
+  handleInputChange = newValue => {
+    this.setState({ localValue: newValue });
+  };
+
   render() {
     let {
       className,
@@ -107,6 +176,17 @@ class Input extends React.Component {
     }
 
     if (Tag === 'input') {
+      if (type === 'number')
+        return (
+          <RenderNumber
+            {...attributes}
+            value={this.state.localValue}
+            innerRef={innerRef}
+            classes={classes}
+            onChange={this.handleInputChange}
+          />
+        );
+
       return (
         <InputWrapper
           valid={valid === undefined ? undefined : this.props.valid}

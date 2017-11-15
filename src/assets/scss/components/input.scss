@@ -67,3 +67,72 @@
   }
 
 
+  //////////// Styles for Qty
+
+
+.qty-increase {
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    z-index: 100;
+    border-color: transparent;
+    border-bottom-color: $gray-lighter;
+  
+    &:hover, &:focus {
+      border: 0 0 1px 0;
+      border-color: transparent;
+      border-bottom-color: $gray-lighter;
+    }
+  }
+  
+  .qty-decrease {
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    border-color: transparent;
+  
+    &:hover, &:focus {
+      border-color: transparent;
+    }
+  }
+  
+  .qty-button {
+    &:hover {
+      background-color: $gray-dark;
+    }
+    & i {
+      font-size: 9px;
+    }
+  }
+  
+  .qty-button {
+    background-color: $gray;
+  }
+  
+  .qty-container { 
+    border-radius: 0.3rem;
+    background-color: $gray-lightest;
+    border-top: 1px $gray;
+    display: flex;
+    width: 70px;
+  }
+  
+  .qty-input {
+    background-color: transparent;
+    display: inline-flex;
+    border: none;
+    -moz-appearance:textfield;
+    min-width: 50px;
+    flex: 1 1 auto;
+  
+    &:focus {
+      background-color: transparent;
+      border: none;
+    }
+  
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+  }
+  
+
+

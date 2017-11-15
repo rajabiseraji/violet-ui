@@ -1,0 +1,26 @@
+@import "../bootstrap/variables";
+
+.custom-radio input:focus ~ .custom-control-indicator { 
+    box-shadow: none;
+}
+
+.custom-control-indicator {
+    position: relative;
+}
+
+.custom-control-description { 
+    user-select: none;
+}
+
+.custom-radio {
+    .custom-control-input:focus ~ .custom-control-indicator {
+        background-color: $gray-lighter;
+    }
+    
+    .custom-control-input:active ~ .custom-control-indicator {
+        background: $gray-lighter;
+    }
+    .custom-control-input:checked ~ .custom-control-indicator {
+        background-color: $gray-lightest;
+    }
+}

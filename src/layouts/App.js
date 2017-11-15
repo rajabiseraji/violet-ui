@@ -3,6 +3,9 @@ import '../assets/scss/App.css';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import AdvancedSelect from '../components/AdvancedSelect';
+import CheckBox from '../components/Checkbox';
+import CheckboxGroup from '../components/CheckboxGroup';
+import RadioGroup from '../components/RadioGroup';
 import 'react-select/dist/react-select.css';
 
 export default class App extends React.Component {
@@ -10,7 +13,22 @@ export default class App extends React.Component {
     input1_text: '',
     input2_text: '',
     clicked: false,
-    val: ''
+    val: '',
+    checkBoxOptions: [
+      {
+        value: 'سلام',
+        isChecked: false
+      },
+      {
+        value: 'بای',
+        isChecked: false
+      },
+      {
+        value: 'های',
+        isChecked: true
+      }
+    ],
+    selected: []
   };
 
   validator = input => {
@@ -28,14 +46,19 @@ export default class App extends React.Component {
     ];
     return options;
   };
+
+  onSelectChange = e => {
+    console.log(e);
+  };
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">به اسنپ‌فود خوش آمدید</h1>
         </header>
-        <div className="container">
-          <div className="row mt-5">
+        <div className="container mt-5">
+          <h4>دکمه‌ها</h4>
+          <div className="row">
             <div className="col mt-1">
               <Button className="w-100" color="primary">
                 کلیک کنید
@@ -63,16 +86,20 @@ export default class App extends React.Component {
               </Button>
             </div>
           </div>
+
+          <hr />
           <div className="container">
-            <div className="row">
+            <h4>اینپوت‌ها</h4>
+            <div className="row text-right">
               <label className="w-100">سلام</label>
               <Input
+                id="testMe"
                 className="w-100"
                 onChange={e => this.setState({ input1_text: e.target.value })}
                 valid={this.validator(this.state.input1_text)}
               />
             </div>
-            <div className="row">
+            <div className="row text-right">
               <label className="w-100">سلام</label>
               <Input
                 ref="some"
@@ -80,22 +107,74 @@ export default class App extends React.Component {
                 onChange={e => this.setState({ input2_text: e.target.value })}
                 valid={this.validator(this.state.input2_text)}
               />
-              <Input type="select" className="mt-2 w-50" placeholder="تست من">
-                <option disabled>تست تست</option>
-                <option vlaue="no way">سلام بر شما</option>
-                <option vlaue="yes way">وای بر شما</option>
-              </Input>
             </div>
-            <div className="row justify-content-center">
+            <hr className="mt-3" />
+
+            <h4>سلکت و سرچ</h4>
+            <div className="d-flex justify-content-around">
+              <AdvancedSelect
+                options={this.options()}
+                onChange={value => this.setState({ val: value })}
+                className="w-50 ml-1 mt-2 text-right"
+                multiple={true}
+                value={this.state.val}
+                placeholder="متن جستجو را وارد کنید"
+                searchable={true}
+              />
               <AdvancedSelect
                 options={this.options()}
                 onChange={value => this.setState({ val: value })}
                 className="w-50 mt-2 text-right"
-                multiple={true}
+                multiple={false}
                 value={this.state.val}
                 placeholder="متن جستجو را وارد کنید"
                 searchable={false}
               />
+            </div>
+            <hr className="mt-3" />
+
+            <h4>چک باکس و رادیو</h4>
+            <div className="row">
+              <CheckBox label="سلام" onChange={this.onSelectChange} />
+            </div>
+            <div className="row">
+              <CheckBox
+                label="باای"
+                onChange={this.onSelectChange}
+                valid={true}
+              />
+            </div>
+            <div className="row mt-3">
+              <CheckboxGroup
+                direction="right"
+                options={this.state.checkBoxOptions}
+                onChange={e => this.setState({ selected: e })}
+              >
+                <CheckBox label="خدافظ" value="اینا" />
+                <CheckBox label="خدافظ" value="اینا" />
+              </CheckboxGroup>
+            </div>
+            <div className="row mt-3">{this.state.selected}</div>
+            <div className="row mt-3 mb-3">
+              <RadioGroup
+                direction="right"
+                options={this.state.checkBoxOptions}
+                onChange={e => this.setState({ selected: e })}
+              />
+            </div>
+            <hr className="mt-3" />
+
+            <div className="row mt-3 mb-3">
+              <div className="form-group text-right">
+                <label>تست</label>
+                <Input
+                  type="number"
+                  onChange={e => console.log(e.target.value)}
+                  max={10}
+                  min={0}
+                  valid={false}
+                />
+              </div>
             </div>
           </div>
         </div>

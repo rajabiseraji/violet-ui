@@ -1,0 +1,17 @@
+@import '../bootstrap/variables';
+
+.custom-control-description { 
+    user-select: none;
+}
+
+.custom-checkbox input:focus ~ .custom-control-indicator { 
+    box-shadow: none;
+}
+
+.custom-control-indicator {
+    position: relative;
+}
+
+.custom-control-input:active ~ .custom-control-indicator {
+    background: $gray-lightest;
+}
