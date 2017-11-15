@@ -150,30 +150,13 @@ export default class App extends React.Component {
             <div className="row mt-3 mb-3">
               <div className="">
                 <label>تست</label>
-                <div className="input-group">
-                  <div className="d-flex flex-row">
-                    <div className="btn-group-vertical btn-group-xs">
-                      <button
-                        className="btn btn-secondary btn-sm display-flex"
-                        type="button"
-                      >
-                        <i className="fa fa-chevron-up" />
-                      </button>
-                      <button
-                        className="btn btn-secondary btn-sm display-flex"
-                        type="button"
-                      >
-                        <i className="fa fa-chevron-down" />
-                      </button>
-                    </div>
-                  </div>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Search for..."
-                    aria-label="Search for..."
-                  />
-                </div>
+                <Input
+                  type="number"
+                  onChange={e => console.log(e.target.value)}
+                  max={10}
+                  min={0}
+                  valid={false}
+                />
               </div>
             </div>
           </div>
