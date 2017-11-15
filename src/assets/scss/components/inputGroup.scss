@@ -1,0 +1,26 @@
+@import '../bootstrap/variables';
+
+.input-group-right {
+    direction: ltr;
+}
+
+.input-group-right input, .input-group-left input {
+    direction: rtl;
+}
+
+.input-group-button { 
+    &:hover {
+        background: $dark-pink;
+        border-color: $dark-pink;
+    }
+}
+
+.__react_component_tooltip.show.place-top.type-dark {
+    background: $dark-pink;
+}
+
+.__react_component_tooltip.type-dark.place-top:after {
+    border-top-color: $dark-pink;
+    border-top-style: solid;
+    border-top-width: 6px;
+}
