@@ -56,8 +56,9 @@ export default class App extends React.Component {
         <header className="App-header">
           <h1 className="App-title">به اسنپ‌فود خوش آمدید</h1>
         </header>
-        <div className="container">
-          <div className="row mt-5">
+        <div className="container mt-5">
+          <h4>دکمه‌ها</h4>
+          <div className="row">
             <div className="col mt-1">
               <Button className="w-100" color="primary">
                 کلیک کنید
@@ -85,16 +86,20 @@ export default class App extends React.Component {
               </Button>
             </div>
           </div>
+
+          <hr />
           <div className="container">
-            <div className="row">
+            <h4>اینپوت‌ها</h4>
+            <div className="row text-right">
               <label className="w-100">سلام</label>
               <Input
+                id="testMe"
                 className="w-100"
                 onChange={e => this.setState({ input1_text: e.target.value })}
                 valid={this.validator(this.state.input1_text)}
               />
             </div>
-            <div className="row">
+            <div className="row text-right">
               <label className="w-100">سلام</label>
               <Input
                 ref="some"
@@ -103,6 +108,9 @@ export default class App extends React.Component {
                 valid={this.validator(this.state.input2_text)}
               />
             </div>
+            <hr className="mt-3" />
+
+            <h4>سلکت و سرچ</h4>
             <div className="d-flex justify-content-around">
               <AdvancedSelect
                 options={this.options()}
@@ -123,11 +131,18 @@ export default class App extends React.Component {
                 searchable={false}
               />
             </div>
+            <hr className="mt-3" />
+
+            <h4>چک باکس و رادیو</h4>
             <div className="row">
               <CheckBox label="سلام" onChange={this.onSelectChange} />
             </div>
             <div className="row">
-              <CheckBox label="خدافظ" onChange={this.onSelectChange} />
+              <CheckBox
+                label="باای"
+                onChange={this.onSelectChange}
+                valid={true}
+              />
             </div>
             <div className="row mt-3">
               <CheckboxGroup
@@ -147,8 +162,10 @@ export default class App extends React.Component {
                 onChange={e => this.setState({ selected: e })}
               />
             </div>
+            <hr className="mt-3" />
+
             <div className="row mt-3 mb-3">
-              <div className="">
+              <div className="form-group text-right">
                 <label>تست</label>
                 <Input
                   type="number"
