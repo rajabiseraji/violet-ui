@@ -109,6 +109,16 @@ $brand-warning:             #F39C12;
 $brand-danger:              #E74C3C;
 $brand-inverse:             $gray-lighter !default;
 
+$happy-bar-color:                #64e700;
+$neutral-bar-color:              #ffc000;
+$sad-bar-color:                  #fae900;
+
+$progress-height:               6px;
+$progress-border-radius:        15px;
+$progress-bar-color:            $white;
+$progress-bar-bg:               $happy-bar-color;
+$progress-bar-border-radius:    $progress-border-radius;
+
 $custom-control-indicator-bg:         $gray-lightest;
 $custom-control-indicator-checked-bg: #2c9133;
 $custom-radio-indicator-icon-checked: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='#{$gray-darker}'/%3E%3C/svg%3E") !default;

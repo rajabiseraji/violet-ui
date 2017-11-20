@@ -7,6 +7,7 @@ import CheckBox from '../components/Checkbox';
 import CheckboxGroup from '../components/CheckboxGroup';
 import RadioGroup from '../components/RadioGroup';
 import InputGroup from '../components/InputGroup';
+import ProgressBar from '../components/Progress';
 import 'react-select/dist/react-select.css';
 
 export default class App extends React.Component {
@@ -184,6 +185,58 @@ export default class App extends React.Component {
               <div className="col-lg-6">
                 <InputGroup valid={true} />
               </div>
+              <div className="col-lg-6">
+                <ProgressBar
+                  direction="right"
+                  type="happy"
+                  max={30}
+                  value={11}
+                  iconClass="fa fa-smile-o"
+                  label="راضی"
+                />
+                <ProgressBar
+                  direction="right"
+                  type="neutral"
+                  max={30}
+                  value={5}
+                  iconClass="fa fa-smile-o"
+                  label="بی‌تفاوت"
+                />
+                <ProgressBar
+                  direction="right"
+                  type="sad"
+                  max={30}
+                  value={20}
+                  iconClass="fa fa-smile-o"
+                  label="ناراضی"
+                />
+              </div>
+            </div>
+            <div className="row mt-5 mb-5 justify-content-center">
+              <ProgressBar
+                direction="right"
+                type="happy"
+                max={30}
+                value={11}
+                iconClass="fa fa-smile-o"
+                label="راضی"
+              />
+              <ProgressBar
+                direction="right"
+                type="neutral"
+                max={30}
+                value={5}
+                iconClass="fa fa-smile-o"
+                label="بی‌تفاوت"
+              />
+              <ProgressBar
+                direction="right"
+                type="sad"
+                max={30}
+                value={20}
+                iconClass="fa fa-smile-o"
+                label="ناراضی"
+              />
             </div>
           </div>
         </div>

@@ -1,0 +1,17 @@
+@import '../bootstrap/variables';
+
+.ltr-progress {
+    direction: ltr;
+}
+
+.happy-bar {
+    background-color: $happy-bar-color;
+}
+
+.neutral-bar {
+    background-color: $neutral-bar-color;
+}
+
+.sad-bar {
+    background-color: $sad-bar-color;
+}

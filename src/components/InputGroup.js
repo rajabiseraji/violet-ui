@@ -24,7 +24,9 @@ export default class InputGroup extends React.Component {
     id: 'input-group-0',
     iconClass: 'fa fa-chevron-left',
     direction: 'right',
-    invalidMessage: 'لطفا مقدار درست را وارد کنید'
+    invalidMessage: 'لطفا مقدار درست را وارد کنید',
+    onInput: () => {},
+    onChange: () => {}
   };
 
   state = {
