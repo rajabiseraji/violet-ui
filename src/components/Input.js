@@ -15,7 +15,8 @@ const propTypes = {
   plaintext: PropTypes.bool,
   addon: PropTypes.bool,
   className: PropTypes.string,
-  cssModule: PropTypes.object
+  cssModule: PropTypes.object,
+  iconClass: PropTypes.string
 };
 
 const defaultProps = {
@@ -32,13 +33,45 @@ const FeedbackIcon = props => {
   } else return null;
 };
 
+const InputIcon = props => {
+  let inputIconClass = '';
+  if (props.type === 'username') inputIconClass = 'fa fa-user';
+  else if (props.type === 'password') inputIconClass = 'fa fa-lock';
+  else if (props.iconClass !== undefined) inputIconClass = props.iconClass;
+  if (inputIconClass.length > 0) {
+    return (
+      <i key={inputIconClass + '-icon'} className={inputIconClass + ' icon'} />
+    );
+  } else return null;
+};
+
 const InputWrapper = props => {
+  let { valid, className, innerRef, type, children, iconClass } = props;
+  let wrapperClasses = classNames(
+    'inner-addon',
+    valid !== undefined ? 'left-addon' : '',
+    type === 'password' || type === 'username' || iconClass !== undefined
+      ? 'right-addon'
+      : '',
+    className
+  );
   return (
-    <div
-      key={props.innerRef + '-div'}
-      className={classNames('inner-addon left-addon', props.className)}
-    >
-      {props.children}
+    <div key={innerRef + '-div'} className={wrapperClasses}>
+      <CSSTransitionGroup
+        transitionName="fade"
+        transitionAppear={true}
+        transitionAppearTimeout={500}
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={300}
+        className={className}
+      >
+        <FeedbackIcon
+          valid={valid}
+          key={(valid === undefined ? '' : valid) + 'feedback-icon'}
+        />
+      </CSSTransitionGroup>
+      <InputIcon type={type} iconClass={iconClass} />
+      {children}
     </div>
   );
 };
@@ -116,6 +149,7 @@ class Input extends React.Component {
   render() {
     let {
       className,
+      iconClass,
       cssModule,
       type,
       bsSize,
@@ -186,29 +220,14 @@ class Input extends React.Component {
             onChange={this.handleInputChange}
           />
         );
-
       return (
         <InputWrapper
           valid={valid === undefined ? undefined : this.props.valid}
           innerRef={this.props.innerRef}
           className={this.props.className}
+          type={type}
+          iconClass={iconClass}
         >
-          <CSSTransitionGroup
-            transitionName="fade"
-            transitionAppear={true}
-            transitionAppearTimeout={500}
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={300}
-            className={className}
-          >
-            <FeedbackIcon
-              valid={this.props.valid}
-              key={
-                (this.props.valid === undefined ? '' : this.props.valid) +
-                'feedback-icon'
-              }
-            />
-          </CSSTransitionGroup>
           <input {...attributes} ref={innerRef} className={classes} />
         </InputWrapper>
       );

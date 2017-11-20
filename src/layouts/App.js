@@ -6,6 +6,7 @@ import AdvancedSelect from '../components/AdvancedSelect';
 import CheckBox from '../components/Checkbox';
 import CheckboxGroup from '../components/CheckboxGroup';
 import RadioGroup from '../components/RadioGroup';
+import InputGroup from '../components/InputGroup';
 import 'react-select/dist/react-select.css';
 
 export default class App extends React.Component {
@@ -97,6 +98,8 @@ export default class App extends React.Component {
                 className="w-100"
                 onChange={e => this.setState({ input1_text: e.target.value })}
                 valid={this.validator(this.state.input1_text)}
+                placeholder="رمز عبور"
+                type="password"
               />
             </div>
             <div className="row text-right">
@@ -174,6 +177,12 @@ export default class App extends React.Component {
                   min={0}
                   valid={false}
                 />
+              </div>
+            </div>
+
+            <div className="row mt-3 mb-3">
+              <div className="col-lg-6">
+                <InputGroup valid={true} />
               </div>
             </div>
           </div>
