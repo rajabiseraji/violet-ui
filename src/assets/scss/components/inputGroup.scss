@@ -12,6 +12,7 @@
     &:hover {
         background: $dark-pink;
         border-color: $dark-pink;
+        cursor: pointer;
     }
 }
 
@@ -19,7 +20,7 @@
     background: $dark-pink;
 }
 
-.__react_component_tooltip.type-dark.place-top:after {
+.__react_component_tooltip.type-dark.show.place-top:after {
     border-top-color: $dark-pink;
     border-top-style: solid;
     border-top-width: 6px;
