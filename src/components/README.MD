@@ -1,24 +1,23 @@
+The components that we've implemented here are the ones that needed to customized in order to prevent further coding and customization.
+**Note**: If there's a component that you feel is really abscent from this list and must be added, please make an issue with the name of the component.
 ## List of Componenets
-Here's a list of all componenets we need to implement in Violet-ui.
+- [Button](#Button)
+- [Input](#Input)
+- [Button Input Group](#Button-Input-Group)
+- Checkbox
+- Checkbox Group
+- Progress Bar
+- Radio and Radio Groups
+- Searchable Select
 
-- Alert and Notification
-- Breadcrumb
-- Button
-- Button-Groups
-- Card
-- Carousel
-- Dropdown
-- Form
-    - Selects
-    - Checkboxes
-    - and ...
-- Input Groups 
-- Modal
-- Nav
-- Navbar
-- **TABLE**! This is really important
-- List Groups
-- Popover and tooltips
+## Usage
+In this section we describe how to use each of these components in your react application.
 
-**EXTRA**: App layout compoenents. 
-These compoenents include things like app-container or sidebars and are used to implement the P.W.A!
+### Button
+dfdfsdf
+
+### Input
+ssdfsdf
+
+### Button Input Group
+sfsdfsdf
