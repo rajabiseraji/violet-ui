@@ -60,9 +60,9 @@ export default class InputGroup extends React.Component {
     let buttonClasses = classNames(
       'btn btn-secondary input-group-button',
       this.props.direction === 'left'
-        ? 'rounded-0 rounded-right border-top-0'
+        ? 'rounded-0 rounded-right border-left-0'
         : '',
-      this.props.direction === 'right' ? 'border-top-0' : ''
+      this.props.direction === 'right' ? ' border-right-0' : ''
     );
 
     let inputClasses = classNames(
