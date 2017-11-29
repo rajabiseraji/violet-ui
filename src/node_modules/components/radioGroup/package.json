@@ -1,0 +1,5 @@
+{
+    "private": true,
+    "name": "radio-group",
+    "main": "../components/RadioGroup.js"
+}

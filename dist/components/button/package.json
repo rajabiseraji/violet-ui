@@ -1,0 +1,5 @@
+{
+    "private": true,
+    "name": "button",
+    "main": "../components/Button.js"
+}
