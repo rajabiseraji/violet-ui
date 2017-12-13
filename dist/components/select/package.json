@@ -1,5 +1,0 @@
-{
-    "private": true,
-    "name": "select",
-    "main": "../components/AdvancedSelect.js"
-}

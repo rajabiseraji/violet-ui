@@ -1,5 +1,0 @@
-{
-    "private": true,
-    "name": "input-group",
-    "main": "../components/InputGroup.js"
-}

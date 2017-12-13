@@ -175,6 +175,18 @@ module.exports = {
                     {
                       loader: require.resolve('css-loader'),
                       options: {
+                        modules: true,
+                        localIdentName: '[name]__[local]___[hash:base64:5]',
+                        importLoaders: 1,
+                        minimize: true,
+                        sourceMap: shouldUseSourceMap,
+                      },
+                    },
+                    {
+                      loader: require.resolve('sass-loader'),
+                      options: {
+                        modules: true,
+                        localIdentName: '[name]__[local]___[hash:base64:5]',
                         importLoaders: 1,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,

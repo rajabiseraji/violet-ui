@@ -1,5 +1,0 @@
-{
-    "private": true,
-    "name": "checkbox-group",
-    "main": "../components/CheckboxGroup.js"
-}
